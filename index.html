@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shihan Mahfuz – Portfolio</title>
+    <!-- Core stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts for headings and body text
+         For a commanding presence, we switch to Oswald – a condensed, masculine sans‑serif – while Inter remains a versatile body font.
+         Using bold, expressive typefaces is a key trend for 2025【352805735262505†L162-L176】. -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons (local import) -->
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="logo">Shihan Mahfuz</a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#stats">Impact</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- mobile nav toggle (hidden on larger screens) -->
+        <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <!-- theme toggle button with emoji icons -->
+        <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle">
+          <span id="theme-icon">🌞</span>
+        </button>
+        <!-- Palette toggle button: allows switching between masculine colour palettes -->
+        <button id="palette-toggle" aria-label="Choose colour palette" class="palette-toggle">🎨</button>
+      </div>
+    </nav>
+
+    <!-- Colour palette selection panel (hidden by default) -->
+    <div id="palette-options" class="palette-options">
+      <!-- Default palette: Classic red and dark grey -->
+      <div class="palette-option" data-palette="default" title="Classic Red"
+           style="background: linear-gradient(45deg, #e7473c 50%, #1f1f1f 50%);"></div>
+      <!-- Corporate palette: Deep navy and silver -->
+      <div class="palette-option" data-palette="corporate" title="Corporate Blue"
+           style="background: linear-gradient(45deg, #8c8c8c 50%, #1a4d70 50%);"></div>
+      <!-- Industrial palette: Gunmetal and safety orange -->
+      <div class="palette-option" data-palette="industrial" title="Industrial Orange"
+           style="background: linear-gradient(45deg, #ff6b00 50%, #2c3539 50%);"></div>
+      <!-- Athletic palette: Electric blue and energetic red -->
+      <div class="palette-option" data-palette="athletic" title="Athletic"
+           style="background: linear-gradient(45deg, #dc143c 50%, #0080ff 50%);"></div>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Hero section -->
+    <header class="hero" id="hero">
+      <div class="hero-content">
+        <h1>Shihan Mahfuz</h1>
+        <p class="tagline">
+          Economics Student &amp;
+          <span id="typewriter" class="typewriter">Creative Marketer</span>
+        </p>
+        <!-- Removed hero buttons: the download CV button has been moved to its own section. -->
+      </div>
+      <div class="hero-image">
+        <img src="assets/IMG_5254.jpg" alt="Portrait of Shihan Mahfuz" />
+      </div>
+    </header>
+
+    <!-- Impact / Stats section showcasing Shihan's reach and achievements -->
+    <section id="stats" class="section stats hidden">
+      <div class="container">
+        <h2>My Impact</h2>
+        <div class="stats-grid">
+          <!-- Years of experience card -->
+          <div class="stat-card">
+            <i class="fas fa-briefcase"></i>
+            <p class="stat-number" data-target="5" data-suffix="+">0</p>
+            <p class="stat-label">Years of Experience</p>
+          </div>
+          <!-- Total roles and projects card -->
+          <div class="stat-card">
+            <i class="fas fa-project-diagram"></i>
+            <p class="stat-number" data-target="9" data-suffix="+">0</p>
+            <p class="stat-label">Roles &amp; Projects</p>
+          </div>
+          <!-- People impacted card -->
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <p class="stat-number" data-target="1" data-multiplier="1000000" data-suffix="M+">0</p>
+            <p class="stat-label">People Reached</p>
+          </div>
+          <!-- Languages spoken card -->
+          <div class="stat-card">
+            <i class="fas fa-language"></i>
+            <p class="stat-number" data-target="4" data-suffix="">0</p>
+            <p class="stat-label">Languages Spoken</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <!-- About section -->
+      <section id="about" class="section about hidden">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            Hello! I'm <strong>Shihan Mahfuz</strong>, an Economics undergraduate at
+            <em>New York University Abu Dhabi</em> (Class of 2027). My
+            experience bridges analytics and creativity – from leading
+            marketing initiatives to launching startups. I enjoy
+            transforming data into stories that resonate, and I'm
+            passionate about finance, business, policy making and
+            entrepreneurship.
+          </p>
+          <p>
+            Whether I'm mentoring youth, designing eye‑catching visuals or
+            analysing complex economic models, I strive to bring
+            curiosity, empathy and innovation to every project. Outside of
+            work you'll find me writing, exploring new business ideas and
+            reading up on the latest in economics and tech.
+          </p>
+        </div>
+      </section>
+
+      <!-- Experience section -->
+      <section id="experience" class="section experience hidden">
+        <div class="container">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <!-- GPS Marketing Agency -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>GPS Marketing Agency</h3>
+                <h4>Marketing Intern <span>| Jun 2025 – Present</span></h4>
+                <ul>
+                  <li>
+                    Conducted market research and developed 50+ video scripts
+                    based on social media trends to support 8 clients.
+                  </li>
+                  <li>
+                    Created 25+ visual pieces (posters, reels, flyers) using
+                    Canva, ensuring brand consistency and audience relevance.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- HackAD SIG -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>HackAD – Computer Science SIG</h3>
+                <h4>Treasurer &amp; Content Creator <span>| Dec 2023 – Jan 2025</span></h4>
+                <ul>
+                  <li>
+                    Designed digital content (posters, reels and flyers) for
+                    HackAD events with an average attendance of 30 people.
+                  </li>
+                  <li>Managed the full budget, including requests and allocations.</li>
+                </ul>
+              </div>
+            </div>
+            <!-- DeepCards -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>DeepCards – Card Games Startup</h3>
+                <h4>Social Media Manager &amp; Content Creator <span>| Jun 2023 – Aug 2023</span></h4>
+                <ul>
+                  <li>
+                    Increased social media presence by 20% in three months by
+                    strategically leveraging TikTok and other platforms.
+                  </li>
+                  <li>
+                    Edited 50+ TikTok videos and optimised their release to
+                    maximise audience engagement.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Workometic -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Workometic – Agency Startup (failed)</h3>
+                <h4>Founder <span>| Aug 2021 – May 2023</span></h4>
+                <ul>
+                  <li>
+                    Mentored hundreds of people, advancing Bangladeshi
+                    manpower in leadership and education.
+                  </li>
+                  <li>
+                    Launched and managed 6 projects, reaching nearly 10,000
+                    people and leading a team of 15.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Mukhosh Publications -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Mukhosh Publications (failed startup)</h3>
+                <h4>Publisher <span>| Jan 2021 – Apr 2023</span></h4>
+                <ul>
+                  <li>
+                    Published and edited four magazines and two books,
+                    reaching over 10,000 readers.
+                  </li>
+                  <li>
+                    Founded Bangladesh's first e‑book publishing company,
+                    designing publications to serve young readers.
+                  </li>
+                  <li>
+                    Executed targeted advertising strategies, driving
+                    engagement from a 4,000‑member Facebook community.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Youth Network Centre -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Youth Network Centre</h3>
+                <h4>Program Manager – Research &amp; Innovation <span>| May 2020 – Aug 2021</span></h4>
+                <ul>
+                  <li>
+                    Organised 12 "Learning Thursday" programs and helped form
+                    a Facebook community that grew to over one million people.
+                  </li>
+                  <li>
+                    Directly supported more than 10,000 individuals and was
+                    recognised as Associate of the Month among 200 peers.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- HoccheTaki Bite Media -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>HoccheTaki – Bite Media</h3>
+                <h4>Lead Journalist <span>| May 2020 – Aug 2021</span></h4>
+                <ul>
+                  <li>
+                    Oversaw a team of seven to produce concise, high‑quality
+                    news content tailored for digital audiences.
+                  </li>
+                  <li>
+                    Produced and published over 500 bite‑sized Facebook news
+                    posts, reaching 15,000+ people per piece.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leadership section -->
+      <section id="leadership" class="section leadership hidden">
+        <div class="container">
+          <h2>Leadership &amp; Activities</h2>
+          <div class="timeline">
+            <!-- Flowers Home Foundation -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Flowers Home Foundation</h3>
+                <h4>Co‑founder &amp; Managing Director <span>| Aug 2021 – Jun 2023</span></h4>
+                <ul>
+                  <li>Led a team of 20 to organise projects serving 10,000+ people.</li>
+                  <li>Raised over 150,000 BDT (≈ $1,500) and cultivated donor relations.</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Mental Health Care -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Mental Health Care Initiative</h3>
+                <h4>Directorial Team Member <span>| Jun 2020 – Dec 2022</span></h4>
+                <ul>
+                  <li>
+                    Implemented plans that expanded participation by 20%,
+                    increasing understanding of mental health.
+                  </li>
+                  <li>Organised five events and built an organisational structure of 100+ people.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills section -->
+      <section id="skills" class="section skills hidden">
+        <div class="container">
+          <h2>Skills &amp; Interests</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Technical</h3>
+              <div class="skill-bar">
+                <span class="skill-label">Python</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="80"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">C++</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="75"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">STATA</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="60"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">MATLAB</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="60"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">Excel</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="70"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">Canva</span>
+                <div class="progress">
+                  <div class="progress-value" data-percent="90"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3>Languages</h3>
+              <ul class="tags">
+                <li>English (Fluent)</li>
+                <li>Bengali (Native)</li>
+                <li>Hindi (Working)</li>
+                <li>Urdu (Working)</li>
+              </ul>
+              <h3>Interests</h3>
+              <ul class="tags">
+                <li>Finance</li>
+                <li>Business</li>
+                <li>Writing</li>
+                <li>Teamwork</li>
+                <li>Reading</li>
+                <li>Movies</li>
+                <li>Entrepreneurship</li>
+                <li>Research</li>
+                <li>Policy Making</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resume section: provides a dedicated place to download the CV -->
+      <section id="resume" class="section resume hidden">
+        <div class="container">
+          <h2>Resume</h2>
+          <div class="resume-buttons">
+            <a href="assets/sm_resume_july2025.pdf" class="btn" download target="_blank">Download Resume</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact section -->
+      <section id="contact" class="section contact hidden">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <p>If you'd like to collaborate or simply say hello, feel free to reach out!</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:nm4356@nyu.edu">nm4356@nyu.edu</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+971501983852">+971 50 198 3852</a></p>
+            <p><strong>Location:</strong> Rāipur, Chittagong, Bangladesh</p>
+          </div>
+          <form id="contact-form">
+            <div class="form-row">
+              <input type="text" id="name" name="name" placeholder="Your Name" required />
+              <input type="email" id="email" name="email" placeholder="Your Email" required />
+            </div>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Shihan Mahfuz. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Core script -->
+    <script src="script.js"></script>
+  </body>
+</html>

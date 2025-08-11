@@ -1,0 +1,691 @@
+/*
+  Global styles for Shihan Mahfuz portfolio
+  This stylesheet defines both light and dark themes, responsive
+  layout, timeline styling, skill bars and navigation. Colour
+  variables live on the :root and .dark selectors; toggled in
+  JavaScript.
+*/
+
+/* CSS variables for light theme */
+:root {
+  /* Commanding colour palette inspired by professional, authoritative designs.  
+     Shades of gray and off‑white provide a neutral canvas while a vibrant red accent draws attention.  
+     Using a limited palette with a powerful primary colour helps visitors focus on important content【952493831020064†L120-L145】. */
+  --bg: #f5f5f5;            /* off‑white background */
+  --bg-secondary: #eaeaea;   /* light grey for cards and inputs */
+  --text: #1a1a1a;          /* near‑black primary text for maximum contrast */
+  --text-secondary: #555555; /* medium grey for secondary text */
+  --primary: #1f1f1f;       /* dark grey used for navigation and structural elements */
+  --accent: #e7473c;        /* bold red accent for highlights, based on 2025 trend palette【952493831020064†L120-L145】 */
+  --card-bg: #ffffff;       /* white card background */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* CSS variables for dark theme */
+.dark {
+  /* Dark mode uses near‑black backgrounds with a consistent red accent to retain the authoritative vibe. */
+  --bg: #121212;            /* very dark background */
+  --bg-secondary: #1f1f1f;   /* dark grey for cards */
+  --text: #f5f5f5;           /* off‑white text */
+  --text-secondary: #b0b0b0; /* muted grey secondary text */
+  --primary: #1f1f1f;        /* dark grey primary */
+  --accent: #e7473c;         /* same bold red accent */
+  --card-bg: #222222;       /* slightly lighter dark card background for contrast */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+/* Use Oswald for headings to create a condensed, masculine presence. 
+   Oswald’s tall letterforms evoke power and confidence, aligning with 2025 trends for bold, expressive typefaces【352805735262505†L162-L176】. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body {
+  margin: 0;
+  /* Use Inter for body text; contemporary sans‑serifs ensure versatility and screen clarity. */
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: var(--accent);
+}
+
+/* Active nav link highlighting */
+.nav-links li a.active {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Ensure navigation links remain visible in dark mode */
+.dark .nav-links li a {
+  color: var(--text);
+}
+.dark .nav-links li a:hover,
+.dark .nav-links li a.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.dark .logo {
+  color: var(--accent);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  margin: 3px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+/* Palette toggle button for switching colour schemes */
+.palette-toggle {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+/* Palette options panel that appears when palette toggle is clicked */
+.palette-options {
+  position: fixed;
+  bottom: 80px;
+  right: 1rem;
+  display: none;
+  flex-direction: row;
+  gap: 0.5rem;
+  background: var(--primary);
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1200;
+}
+
+/* When visible, show the palette options */
+.palette-options.show {
+  display: flex;
+}
+
+/* Each palette swatch */
+.palette-option {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--bg-secondary);
+}
+
+/* Ensure palette panel adapts in dark mode */
+.dark .palette-options {
+  background: var(--primary);
+}
+.dark .palette-option {
+  border-color: var(--bg-secondary);
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 7rem 1rem 4rem;
+  /* Hero background uses a dark geometric pattern with a semi‑transparent overlay.  
+     The pattern adds depth and a commanding feel, while the overlay ensures text remains legible. */
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('assets/commanding_bg.png');
+  background-size: cover;
+  background-position: center;
+  color: var(--bg);
+  flex-wrap: wrap;
+  text-align: left;
+  /* Enable 3D perspective for tilt effect */
+  perspective: 800px;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 250px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons .btn {
+  margin-right: 1rem;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Smoothly animate 3D tilting on hero content and image */
+.hero-content,
+.hero-image {
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+/* Reveal animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 3rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on timeline items for a sense of depth */
+.timeline-content:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content h3 {
+  margin: 0 0 0.3rem;
+  color: var(--text);
+}
+
+.timeline-content h4 {
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.timeline-content ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.timeline-content ul li {
+  margin-bottom: 0.5rem;
+  list-style: disc;
+  color: var(--text-secondary);
+}
+
+/* Leadership timeline accent colour */
+.leadership .timeline::before,
+/* Leadership timeline uses the same accent colour for consistency */
+.leadership .timeline::before,
+.leadership .timeline-marker {
+  background: var(--accent);
+}
+
+/* Skills */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.skill-category {
+  flex: 1;
+  min-width: 250px;
+}
+
+.skill-category h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+/* Ensure skill headings are visible in dark mode */
+.dark .skill-category h3 {
+  color: var(--accent);
+}
+
+.skill-bar {
+  margin-bottom: 1rem;
+}
+
+.skill-bar .skill-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.progress {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-value {
+  background: var(--accent);
+  width: 0;
+  height: 100%;
+  transition: width 1.5s ease;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+/* Adjust tag styling in dark mode for contrast */
+.dark .tags li {
+  background: #2a2a2a;
+  color: var(--text-secondary);
+}
+
+/* Stats section styling */
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 220px;
+  background: var(--card-bg);
+  padding: 2rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Cursor follower element */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+  z-index: 10000;
+}
+
+/* Typewriter text with blinking caret */
+.typewriter {
+  display: inline-block;
+  border-right: 2px solid var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink-caret 0.8s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--accent);
+  }
+}
+
+/* Contact */
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+#contact-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-row input,
+#contact-form textarea {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--bg-secondary);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+#contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(231, 71, 60, 0.3);
+}
+
+.btn {
+  display: inline-block;
+  /* Buttons use the accent colour with light text for readability */
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* enables ripple effect */
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  /* On hover invert the button: white background with accent text */
+  background: var(--bg);
+  color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--bg);
+  border: 2px solid var(--bg);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* Scroll progress bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: var(--accent);
+  z-index: 1100;
+  transition: width 0.1s ease-out;
+}
+
+/* Ripple effect for buttons */
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-secondary);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Resume section */
+.resume-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.resume-buttons .btn {
+  margin-right: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: var(--primary);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    padding-top: 6rem;
+    text-align: center;
+  }
+  .hero-image {
+    margin-bottom: 2rem;
+  }
+}
